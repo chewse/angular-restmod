@@ -1,6 +1,6 @@
 /**
  * API Bound Models for AngularJS
- * @version v1.1.11 - 2015-10-26
+ * @version v1.1.11 - 2016-08-23
  * @link https://github.com/angular-platanus/restmod
  * @author Ignacio Baixas <ignacio@platan.us>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -1890,7 +1890,7 @@ RMModule.factory('RMBuilder', ['$injector', 'inflector', '$log', 'RMUtils', func
       extend: function(_name, _fun, _mapping) {
         if(typeof _name === 'string') {
           this[_name] = Utils.override(this[name], _fun);
-          if(_mapping) mappings.push({ fun: _name, sign: _mapping });
+          if(_mapping) mappings.unshift({ fun: _name, sign: _mapping });
         } else Utils.extendOverriden(this, _name);
         return this;
       },
@@ -1960,6 +1960,7 @@ RMModule.factory('RMBuilder', ['$injector', 'inflector', '$log', 'RMUtils', func
   return Builder;
 
 }]);
+
 RMModule.factory('RMBuilderComputed', ['restmod',
   function(restmod) {
     /**
